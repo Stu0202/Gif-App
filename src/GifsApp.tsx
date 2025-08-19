@@ -5,6 +5,7 @@ import { SearchBar } from './shared/components/SearchBar'
 import { PreviousSearches } from './gifs/components/PreviousSearches'
 import { GifList } from './gifs/components/GifList'
 import { mockGifs } from './mock-data/gifs.mock'
+import { getGifsByQuery } from './gifs/actions/get-gifs-by-query.action'
 
 export const GifsApp = () => {
     const [previousTerms, setPreviousTerms] = useState(['dragon ball z'])
@@ -13,7 +14,7 @@ export const GifsApp = () => {
         console.log(term)
     }
 
-    const handleSearch = (query: string = '') => {
+    const handleSearch = async (query: string = '') => {
         query = query.trim().toLowerCase()
 
         if (query.length === 0) return
@@ -23,6 +24,8 @@ export const GifsApp = () => {
 
         setPreviousTerms([query, ...previousTerms].splice(0, 8))
 
+        const gifs = await getGifsByQuery(query)
+        console.log(gifs)
     }
 
     return (
