@@ -22,3 +22,4 @@ export const GifList = ({ gifs }: Props) => {
         </div>
     )
 }
+//https://api.giphy.com/v1/gifs/search?api_key=JPJ7Vs2feGk8tfU8ykfnt8hxbfoRGqAj&q=hitman&limit=25&offset=0&rating=g&lang=es&bundle=messaging_non_clips
