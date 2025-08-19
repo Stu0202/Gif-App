@@ -1,48 +1,27 @@
 import React from 'react'
+
+import { CustomHeader } from './shared/components/CustomHeader'
+import { SearchBar } from './shared/components/SearchBar'
+import { PreviousSearches } from './gifs/components/PreviousSearches'
+import { GifList } from './gifs/components/GifList'
 import { mockGifs } from './mock-data/gifs.mock'
 
 export const GifsApp = () => {
     return (
         <>
             {/* Header */}
-            <div className='content-center'>
-                <h1>Buscador de Gifs</h1>
 
-                <p>Descubre y comparte el gif perfecto</p>
-
-            </div>
+            <CustomHeader title='Buscador de Gifs' description='Descrube y comparte el gif perfecto' />
 
             {/* Search */}
 
-            <div className="search-container">
-                <input type="text" placeholder='Buscar gifs' />
-                <button>Buscar</button>
-            </div>
+            <SearchBar placeholder='Buscar Gifs' />
             {/* Búsquedas  Previas */}
-            <div className="previous-searches ">
-                <h2>Busquedas Previas</h2>
-                <ul className='previous-searches-list'>
-                    <li>Goku</li>
-                    <li>Leon.Scoot.Kennedy</li>
-                    <li>Resident Evil</li>
-                    <li>HitMan</li>
-                </ul>
-            </div>
+
+            <PreviousSearches searches={['Goku', 'Dragon Ball z', 'HitMan', 'Resident Evil']} />
 
             {/* Gifs */}
-            <div className="gifs-container">
-                {
-                    mockGifs.map((gif) => (
-                        <div key={gif.id} className='gif-card'>
-                            <img src={gif.url} alt={gif.url} />
-                            <h3>{gif.title}</h3>
-                            <p>
-                                {gif.width}*{gif.height} (1.5mb)
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
+            <GifList gifs={mockGifs} />
         </>
     )
 }
