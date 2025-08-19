@@ -13,6 +13,11 @@ export const GifsApp = () => {
         console.log(term)
     }
 
+    const handleSearch = (query: string) => {
+        console.log({ query })
+
+    }
+
     return (
         <>
             {/* Header */}
@@ -21,7 +26,10 @@ export const GifsApp = () => {
 
             {/* Search */}
 
-            <SearchBar placeholder='Buscar Gifs' />
+            <SearchBar
+                placeholder='Buscar Gifs'
+                onQuery={handleSearch}
+            />
             {/* Búsquedas  Previas */}
 
             <PreviousSearches searches={previousTerms} onLabelClicked={handleTermClick} />
